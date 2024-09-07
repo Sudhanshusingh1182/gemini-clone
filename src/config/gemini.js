@@ -4,10 +4,16 @@
  * $ npm install @google/generative-ai
  */
 
-import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
 
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/generative-ai";
   
-  const apiKey = "AIzaSyDpSmRWiMee7lvXx_hh7-sSaLI41z2Cnp8";
+  const apiKey = import.meta.env.VITE_SECRET_KEY;
+
+  console.log(apiKey);
+  console.log(typeof apiKey);
+  
+  
+
   const genAI = new GoogleGenerativeAI(apiKey);
   
   const model = genAI.getGenerativeModel({
@@ -32,7 +38,7 @@ import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from "@google/ge
     });
   
     const result = await chatSession.sendMessage(prompt);
-    console.log(result.response.text());
+    //console.log(result.response.text());
     return result.response.text();
   }
   
